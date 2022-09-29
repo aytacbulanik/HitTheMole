@@ -39,7 +39,21 @@ class GamePlayScreenVC: UIViewController {
         timeLabel.text = "\(time)"
         if time == 0 {
             sayac.invalidate()
+            time = 10
+            timeLabel.text = "10"
+            showAlert(name: "Game Over", description: "Do want to play again")
         }
+    }
+    
+    func showAlert(name : String , description : String) {
+        let alert = UIAlertController(title: name, message: description, preferredStyle: .alert)
+        let replayButton = UIAlertAction(title: "REPLAY", style: .default) { _ in
+            self.sayac = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.sayacSay), userInfo: nil, repeats: true)
+        }
+        let okButton = UIAlertAction(title: "OK", style: .cancel)
+        alert.addAction(okButton)
+        alert.addAction(replayButton)
+        present(alert, animated: true)
     }
 
 }
