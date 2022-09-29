@@ -25,9 +25,11 @@ class GamePlayScreenVC: UIViewController {
     @IBOutlet var holeImage8 : UIImageView!
     @IBOutlet var holeImage9 : UIImageView!
     
+    var imageArray = [UIImageView]()
     var time = 10
     var score = 0
     var sayac = Timer()
+    var imageSayac = Timer()
     
     var name : String? {
         didSet {
@@ -39,7 +41,19 @@ class GamePlayScreenVC: UIViewController {
         super.viewDidLoad()
 
         navigationItem.hidesBackButton = true
-       
+        imageArray.append(holeImage1)
+        imageArray.append(holeImage2)
+        imageArray.append(holeImage3)
+        imageArray.append(holeImage4)
+        imageArray.append(holeImage5)
+        imageArray.append(holeImage6)
+        imageArray.append(holeImage7)
+        imageArray.append(holeImage8)
+        imageArray.append(holeImage9)
+        
+        for image in imageArray {
+            image.isHidden = true
+        }
         gestureManage()
         
     }
@@ -50,6 +64,7 @@ class GamePlayScreenVC: UIViewController {
         time = 10
         score = 0
         sayac = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(sayacSay), userInfo: nil, repeats: true)
+        imageSayac = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(imageChange), userInfo: nil, repeats: true)
     }
     
     @objc func sayacSay() {
@@ -57,11 +72,19 @@ class GamePlayScreenVC: UIViewController {
         timeLabel.text = "\(time)"
         if time == 0 {
             sayac.invalidate()
+            imageSayac.invalidate()
             time = 10
             scoreLabel.text = "Score : \(score)"
             timeLabel.text = "10"
             showAlert(name: "Game Over", description: "Score : \(score) ---- Do want to play again")
         }
+    }
+    
+    @objc func imageChange() {
+        for image in imageArray {
+            image.isHidden = true
+        }
+        imageArray.randomElement()?.isHidden = false
     }
     @objc func upScore() {
         score += 1
@@ -104,6 +127,7 @@ class GamePlayScreenVC: UIViewController {
             self.score = 0
             self.scoreLabel.text = "Score : \(self.score)"
             self.sayac = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.sayacSay), userInfo: nil, repeats: true)
+            self.imageSayac = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.imageChange), userInfo: nil, repeats: true)
         }
         let okButton = UIAlertAction(title: "OK", style: .cancel) {
             _ in
