@@ -161,9 +161,17 @@
                             <constraint firstItem="DCc-uZ-kPJ" firstAttribute="centerX" secondItem="5PA-tU-3eL" secondAttribute="centerX" id="wZ8-Nu-aZL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="9vo-u3-aHi"/>
+                    <navigationItem key="navigationItem" id="9vo-u3-aHi">
+                        <barButtonItem key="backBarButtonItem" title="Back to Game" id="g6t-zC-XaI"/>
+                        <barButtonItem key="rightBarButtonItem" title="Scores" id="vlc-tw-LnC">
+                            <connections>
+                                <segue destination="r1d-43-FaB" kind="show" id="xuH-5v-Yml"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="highScoreLabel" destination="DCc-uZ-kPJ" id="KP0-RG-e6G"/>
+                        <outlet property="scoreBarButton" destination="vlc-tw-LnC" id="8xf-Cm-BkH"/>
                         <outlet property="scoreLabel" destination="f6F-sd-MR4" id="NVT-09-YaS"/>
                         <outlet property="timeLabel" destination="sto-dq-HCz" id="wJJ-Uz-8eP"/>
                     </connections>
@@ -171,6 +179,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ite-Dc-UKI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1681.1594202898552" y="97.767857142857139"/>
+        </scene>
+        <!--Scores TableVC-->
+        <scene sceneID="fzh-7i-tPT">
+            <objects>
+                <tableViewController id="r1d-43-FaB" customClass="ScoresTableVC" customModule="HitTheMole" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="xKe-I0-rUM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="scoreCell" textLabel="Gt0-Sh-Er2" detailTextLabel="27C-wv-Sws" style="IBUITableViewCellStyleSubtitle" id="1cC-s1-41M">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1cC-s1-41M" id="JLl-Rj-pts">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gt0-Sh-Er2">
+                                            <rect key="frame" x="20" y="6" width="25" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="27C-wv-Sws">
+                                            <rect key="frame" x="20" y="22.5" width="40.5" height="13.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="r1d-43-FaB" id="eUn-md-yLM"/>
+                            <outlet property="delegate" destination="r1d-43-FaB" id="tUC-KL-AmB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="usP-dm-8vc"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eCw-KT-4pF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2506" y="98"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DaV-BF-odm">
@@ -193,6 +246,9 @@
     </scenes>
     <resources>
         <image name="test" width="200" height="194"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

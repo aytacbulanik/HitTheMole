@@ -14,7 +14,7 @@
 		B4C3896728E4DDBE002BEFA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4C3896528E4DDBE002BEFA2 /* LaunchScreen.storyboard */; };
 		B4C3896F28E4DEA5002BEFA2 /* FirstMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C3896E28E4DEA5002BEFA2 /* FirstMainVC.swift */; };
 		B4C3897128E4E43E002BEFA2 /* GamePlayScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C3897028E4E43E002BEFA2 /* GamePlayScreenVC.swift */; };
-		B4F2F50D28E5AF6A00D48626 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F2F50C28E5AF6A00D48626 /* Alert.swift */; };
+		B4F2F50F28E5B37300D48626 /* ScoresTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F2F50E28E5B37300D48626 /* ScoresTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		B4C3896828E4DDBE002BEFA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4C3896E28E4DEA5002BEFA2 /* FirstMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstMainVC.swift; sourceTree = "<group>"; };
 		B4C3897028E4E43E002BEFA2 /* GamePlayScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayScreenVC.swift; sourceTree = "<group>"; };
-		B4F2F50C28E5AF6A00D48626 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		B4F2F50E28E5B37300D48626 /* ScoresTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,15 +62,39 @@
 			children = (
 				B4C3895A28E4DDB9002BEFA2 /* AppDelegate.swift */,
 				B4C3895C28E4DDB9002BEFA2 /* SceneDelegate.swift */,
-				B4C3896028E4DDB9002BEFA2 /* Main.storyboard */,
-				B4C3896E28E4DEA5002BEFA2 /* FirstMainVC.swift */,
-				B4C3897028E4E43E002BEFA2 /* GamePlayScreenVC.swift */,
+				B4F2F51228E5B44400D48626 /* Controller */,
+				B4F2F51128E5B43D00D48626 /* View */,
+				B4F2F51028E5B42400D48626 /* Model */,
 				B4C3896328E4DDBE002BEFA2 /* Assets.xcassets */,
 				B4C3896528E4DDBE002BEFA2 /* LaunchScreen.storyboard */,
 				B4C3896828E4DDBE002BEFA2 /* Info.plist */,
-				B4F2F50C28E5AF6A00D48626 /* Alert.swift */,
 			);
 			path = HitTheMole;
+			sourceTree = "<group>";
+		};
+		B4F2F51028E5B42400D48626 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B4F2F51128E5B43D00D48626 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B4C3896028E4DDB9002BEFA2 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B4F2F51228E5B44400D48626 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B4C3897028E4E43E002BEFA2 /* GamePlayScreenVC.swift */,
+				B4C3896E28E4DEA5002BEFA2 /* FirstMainVC.swift */,
+				B4F2F50E28E5B37300D48626 /* ScoresTableVC.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,7 +171,7 @@
 				B4C3895B28E4DDB9002BEFA2 /* AppDelegate.swift in Sources */,
 				B4C3895D28E4DDB9002BEFA2 /* SceneDelegate.swift in Sources */,
 				B4C3897128E4E43E002BEFA2 /* GamePlayScreenVC.swift in Sources */,
-				B4F2F50D28E5AF6A00D48626 /* Alert.swift in Sources */,
+				B4F2F50F28E5B37300D48626 /* ScoresTableVC.swift in Sources */,
 				B4C3896F28E4DEA5002BEFA2 /* FirstMainVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,6 +13,8 @@ class GamePlayScreenVC: UIViewController {
     @IBOutlet var timeLabel : UILabel!
     @IBOutlet var scoreLabel : UILabel!
     @IBOutlet var highScoreLabel : UILabel!
+    
+    @IBOutlet var scoreBarButton : UIBarButtonItem!
     var time = 10
     var sayac = Timer()
     
@@ -26,10 +28,12 @@ class GamePlayScreenVC: UIViewController {
         super.viewDidLoad()
 
         navigationItem.hidesBackButton = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        scoreBarButton.isEnabled = false
         time = 10
         sayac = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(sayacSay), userInfo: nil, repeats: true)
     }
@@ -50,7 +54,10 @@ class GamePlayScreenVC: UIViewController {
         let replayButton = UIAlertAction(title: "REPLAY", style: .default) { _ in
             self.sayac = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.sayacSay), userInfo: nil, repeats: true)
         }
-        let okButton = UIAlertAction(title: "OK", style: .cancel)
+        let okButton = UIAlertAction(title: "OK", style: .cancel) {
+            _ in
+            self.scoreBarButton.isEnabled = true
+        }
         alert.addAction(okButton)
         alert.addAction(replayButton)
         present(alert, animated: true)
