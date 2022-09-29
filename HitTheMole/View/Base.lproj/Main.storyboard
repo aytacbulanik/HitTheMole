@@ -74,8 +74,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score : 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6F-sd-MR4">
-                                <rect key="frame" x="160.5" y="181.5" width="93" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score : 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6F-sd-MR4">
+                                <rect key="frame" x="160.5" y="181.5" width="93.5" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -140,8 +140,8 @@
                                     <constraint firstAttribute="trailing" secondItem="Jfr-SO-Mdb" secondAttribute="trailing" id="fN8-k2-uNY"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score : 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCc-uZ-kPJ">
-                                <rect key="frame" x="132" y="700" width="150.5" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score : 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCc-uZ-kPJ">
+                                <rect key="frame" x="131.5" y="700" width="151" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -171,6 +171,15 @@
                     </navigationItem>
                     <connections>
                         <outlet property="highScoreLabel" destination="DCc-uZ-kPJ" id="KP0-RG-e6G"/>
+                        <outlet property="holeImage1" destination="4zb-CZ-nH4" id="g0R-xC-JgT"/>
+                        <outlet property="holeImage2" destination="kBh-HA-wxA" id="7KT-jr-mTb"/>
+                        <outlet property="holeImage3" destination="50p-P2-mxd" id="9gj-Iq-2UG"/>
+                        <outlet property="holeImage4" destination="DzL-xE-Oxl" id="aJt-EB-AcB"/>
+                        <outlet property="holeImage5" destination="uUH-nU-YTN" id="FTC-jE-2oV"/>
+                        <outlet property="holeImage6" destination="QAM-4H-PhZ" id="dBA-sl-Evw"/>
+                        <outlet property="holeImage7" destination="0K1-W3-BZe" id="BMm-lK-xmf"/>
+                        <outlet property="holeImage8" destination="Ccc-Qc-DS2" id="0YY-uL-eTs"/>
+                        <outlet property="holeImage9" destination="F82-Uf-qtq" id="VU0-vH-VJy"/>
                         <outlet property="scoreBarButton" destination="vlc-tw-LnC" id="8xf-Cm-BkH"/>
                         <outlet property="scoreLabel" destination="f6F-sd-MR4" id="NVT-09-YaS"/>
                         <outlet property="timeLabel" destination="sto-dq-HCz" id="wJJ-Uz-8eP"/>
