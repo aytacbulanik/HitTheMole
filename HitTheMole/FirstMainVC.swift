@@ -27,8 +27,10 @@ class FirstMainVC: UIViewController {
 
     @IBAction func playButtonPressed(_ sender : UIButton) {
         if let name = nameTextField.text {
-            username = name
-            performSegue(withIdentifier: "goPlaySegue", sender: nil)
+            if !name.isEmpty {
+                username = name
+                performSegue(withIdentifier: "goPlaySegue", sender: nil)
+            }
         }
     }
 
