@@ -8,8 +8,7 @@
 import UIKit
 
 class GamePlayScreenVC: UIViewController {
-    
-    
+
     @IBOutlet var timeLabel : UILabel!
     @IBOutlet var scoreLabel : UILabel!
     @IBOutlet var highScoreLabel : UILabel!
@@ -40,16 +39,7 @@ class GamePlayScreenVC: UIViewController {
         super.viewDidLoad()
 
         navigationItem.hidesBackButton = true
-        holeImage1.isUserInteractionEnabled = true
-        holeImage2.isUserInteractionEnabled = true
-        holeImage3.isUserInteractionEnabled = true
-        holeImage4.isUserInteractionEnabled = true
-        holeImage5.isUserInteractionEnabled = true
-        holeImage6.isUserInteractionEnabled = true
-        holeImage7.isUserInteractionEnabled = true
-        holeImage8.isUserInteractionEnabled = true
-        holeImage9.isUserInteractionEnabled = true
-        
+       
         gestureManage()
         
     }
@@ -68,9 +58,9 @@ class GamePlayScreenVC: UIViewController {
         if time == 0 {
             sayac.invalidate()
             time = 10
-            scoreLabel.text = "Score : 0"
+            scoreLabel.text = "Score : \(score)"
             timeLabel.text = "10"
-            showAlert(name: "Game Over", description: "Score : \(score) Do want to play again")
+            showAlert(name: "Game Over", description: "Score : \(score) ---- Do want to play again")
         }
     }
     @objc func upScore() {
@@ -79,6 +69,15 @@ class GamePlayScreenVC: UIViewController {
     }
     
     func gestureManage() {
+        holeImage1.isUserInteractionEnabled = true
+        holeImage2.isUserInteractionEnabled = true
+        holeImage3.isUserInteractionEnabled = true
+        holeImage4.isUserInteractionEnabled = true
+        holeImage5.isUserInteractionEnabled = true
+        holeImage6.isUserInteractionEnabled = true
+        holeImage7.isUserInteractionEnabled = true
+        holeImage8.isUserInteractionEnabled = true
+        holeImage9.isUserInteractionEnabled = true
         let gesture1 = UITapGestureRecognizer(target: self, action: #selector(upScore))
         holeImage1.addGestureRecognizer(gesture1)
         let gesture2 = UITapGestureRecognizer(target: self, action: #selector(upScore))
@@ -102,6 +101,8 @@ class GamePlayScreenVC: UIViewController {
     func showAlert(name : String , description : String) {
         let alert = UIAlertController(title: name, message: description, preferredStyle: .alert)
         let replayButton = UIAlertAction(title: "REPLAY", style: .default) { _ in
+            self.score = 0
+            self.scoreLabel.text = "Score : \(self.score)"
             self.sayac = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.sayacSay), userInfo: nil, repeats: true)
         }
         let okButton = UIAlertAction(title: "OK", style: .cancel) {
