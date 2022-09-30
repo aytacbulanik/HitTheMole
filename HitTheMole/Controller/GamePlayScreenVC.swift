@@ -76,7 +76,11 @@ class GamePlayScreenVC: UIViewController {
             time = 10
             scoreLabel.text = "Score : \(score)"
             timeLabel.text = "10"
-            showAlert(name: "Game Over", description: "Score : \(score) ---- Do want to play again")
+            showAlert(name: "Game Over",
+            description: """
+            Score : \(score)
+            Do want to play again
+            """)
         }
     }
     
