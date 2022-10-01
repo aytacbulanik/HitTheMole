@@ -82,11 +82,9 @@ class GamePlayScreenVC: UIViewController {
             Score : \(score)
             Do want to play again
             """)
-            let score = Score(scorePuan: score, scoreDate: Date.now)
-            do {
-                try! realm.write {
-                    realm.add(score)
-                }
+            let score = Score(scorePuan: score, scoreDate: "\(score)...")
+            try! realm.write {
+                realm.add(score)
             }
         }
     }
