@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B44F5DA528E8C8010067E88F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = B44F5DA428E8C8010067E88F /* Realm */; };
 		B44F5DA728E8C8010067E88F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B44F5DA628E8C8010067E88F /* RealmSwift */; };
+		B44F5DA928E8CB8A0067E88F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F5DA828E8CB8A0067E88F /* Score.swift */; };
 		B4C3895B28E4DDB9002BEFA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C3895A28E4DDB9002BEFA2 /* AppDelegate.swift */; };
 		B4C3895D28E4DDB9002BEFA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C3895C28E4DDB9002BEFA2 /* SceneDelegate.swift */; };
 		B4C3896228E4DDB9002BEFA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4C3896028E4DDB9002BEFA2 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B44F5DA828E8CB8A0067E88F /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = SOURCE_ROOT; };
 		B4C3895728E4DDB9002BEFA2 /* HitTheMole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HitTheMole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4C3895A28E4DDB9002BEFA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4C3895C28E4DDB9002BEFA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 		B4F2F51028E5B42400D48626 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B44F5DA828E8CB8A0067E88F /* Score.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				B4C3895D28E4DDB9002BEFA2 /* SceneDelegate.swift in Sources */,
 				B4C3897128E4E43E002BEFA2 /* GamePlayScreenVC.swift in Sources */,
 				B4F2F50F28E5B37300D48626 /* ScoresTableVC.swift in Sources */,
+				B44F5DA928E8CB8A0067E88F /* Score.swift in Sources */,
 				B4C3896F28E4DEA5002BEFA2 /* FirstMainVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

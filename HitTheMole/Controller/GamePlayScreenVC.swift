@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class GamePlayScreenVC: UIViewController {
 
@@ -30,7 +31,7 @@ class GamePlayScreenVC: UIViewController {
     var score = 0
     var sayac = Timer()
     var imageSayac = Timer()
-    
+    let realm = try! Realm()
     var name : String? {
         didSet {
            title = name!
@@ -81,6 +82,12 @@ class GamePlayScreenVC: UIViewController {
             Score : \(score)
             Do want to play again
             """)
+            let score = Score(scorePuan: score, scoreDate: Date.now)
+            do {
+                try! realm.write {
+                    realm.add(score)
+                }
+            }
         }
     }
     
