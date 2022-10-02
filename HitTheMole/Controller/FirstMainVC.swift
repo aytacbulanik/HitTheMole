@@ -25,6 +25,7 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
         if segue.identifier == "goPlaySegue" {
             let baglanti = segue.destination as! GamePlayScreenVC
             baglanti.name = username
+            baglanti.comeLevel = level
         }
     }
     
@@ -34,7 +35,6 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
             if !name.isEmpty {
                 username = name
                 levelConfig()
-                performSegue(withIdentifier: "goPlaySegue", sender: nil)
             }
         }
     }
@@ -44,14 +44,17 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
         let easyButton = UIAlertAction(title: "Easy", style: .default) {
             action in
             self.level = 0.5
+            self.performSegue(withIdentifier: "goPlaySegue", sender: nil)
         }
         let mediumButton = UIAlertAction(title: "Medium", style: .default) {
             action in
             self.level = 0.35
+            self.performSegue(withIdentifier: "goPlaySegue", sender: nil)
         }
         let hardButton = UIAlertAction(title: "Hard", style: .default) {
             action in
             self.level = 0.2
+            self.performSegue(withIdentifier: "goPlaySegue", sender: nil)
         }
         alert.addAction(easyButton)
         alert.addAction(mediumButton)

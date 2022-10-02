@@ -37,10 +37,11 @@ class GamePlayScreenVC: UIViewController {
            title = name!
         }
     }
+    var comeLevel : Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(comeLevel)
         navigationItem.hidesBackButton = true
         imageArray.append(holeImage1)
         imageArray.append(holeImage2)
