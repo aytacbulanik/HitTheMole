@@ -7,13 +7,17 @@
 
 import UIKit
 
-class FirstMainVC: UIViewController {
+class FirstMainVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var nameTextField : UITextField!
     var username : String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        nameTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTextField.endEditing(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
