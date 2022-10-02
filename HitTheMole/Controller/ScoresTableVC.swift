@@ -30,7 +30,7 @@ class ScoresTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "scoreCell", for: indexPath)
         if let score = scores?[indexPath.row] {
-            cell.textLabel?.text = score.scoreDate
+            cell.textLabel?.text = "\(score.scoreDate)"
             cell.detailTextLabel?.text = "\(score.scorePuan)"
         }
         

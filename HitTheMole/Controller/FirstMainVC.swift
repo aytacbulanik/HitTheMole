@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class FirstMainVC: UIViewController {
     
@@ -14,7 +13,6 @@ class FirstMainVC: UIViewController {
     var username : String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(Realm.Configuration.defaultConfiguration.fileURL)
         // Do any additional setup after loading the view.
     }
     

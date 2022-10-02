@@ -10,9 +10,9 @@ import RealmSwift
 
 class Score : Object {
     @Persisted var scorePuan: Int = 0
-    @Persisted var scoreDate: String = ""
+    @Persisted var scoreDate: Date = Date.now
     
-    convenience init(scorePuan : Int, scoreDate : String) {
+    convenience init(scorePuan : Int, scoreDate : Date) {
         self.init()
         self.scorePuan = scorePuan
         self.scoreDate = scoreDate
