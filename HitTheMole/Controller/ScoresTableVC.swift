@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ScoresTableVC: UITableViewController {
-
+    
+    var scores : Results<Score>?
+    let realm = try! Realm()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,13 +21,19 @@ class ScoresTableVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return scores?.count ?? 1
+    }
+    override func viewWillAppear(_ animated: Bool) {
+         scores = realm.objects(Score.self)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "scoreCell", for: indexPath)
-        cell.textLabel?.text = "Score 13"
-        cell.detailTextLabel?.text = "29.09.2022"
+        if let score = scores?[indexPath.row] {
+            cell.textLabel?.text = score.scoreDate
+            cell.detailTextLabel?.text = "\(score.scorePuan)"
+        }
+        
         return cell
     }
 
