@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "27C-wv-Sws"; */
+"27C-wv-Sws.text" = "Subtitle";
+
+/* Class = "UILabel"; text = "High Score : 0"; ObjectID = "DCc-uZ-kPJ"; */
+"DCc-uZ-kPJ.text" = "High Score : 0";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Gt0-Sh-Er2"; */
+"Gt0-Sh-Er2.text" = "Title";
+
+/* Class = "UILabel"; text = "Score : 0"; ObjectID = "f6F-sd-MR4"; */
+"f6F-sd-MR4.text" = "Score : 0";
+
+/* Class = "UIBarButtonItem"; title = "Back to Game"; ObjectID = "g6t-zC-XaI"; */
+"g6t-zC-XaI.title" = "Back to Game";
+
+/* Class = "UITextField"; placeholder = "Please, Write a name..."; ObjectID = "m0g-MM-p3h"; */
+"m0g-MM-p3h.placeholder" = "Please, Write a name...";
+
+/* Class = "UILabel"; text = "Welcome to Hit The Mole"; ObjectID = "se6-No-UQl"; */
+"se6-No-UQl.text" = "Welcome to Hit The Mole";
+
+/* Class = "UILabel"; text = "10"; ObjectID = "sto-dq-HCz"; */
+"sto-dq-HCz.text" = "10";
+
+/* Class = "UIBarButtonItem"; title = "Scores"; ObjectID = "vlc-tw-LnC"; */
+"vlc-tw-LnC.title" = "Scores";
+
+/* Class = "UIButton"; configuration.title = "Play"; ObjectID = "yCX-WV-xq2"; */
+"yCX-WV-xq2.configuration.title" = "Play";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "yCX-WV-xq2"; */
+"yCX-WV-xq2.normalTitle" = "Button";

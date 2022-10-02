@@ -65,7 +65,7 @@ class GamePlayScreenVC: UIViewController {
         time = 10
         score = 0
         sayac = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(sayacSay), userInfo: nil, repeats: true)
-        imageSayac = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(imageChange), userInfo: nil, repeats: true)
+        imageSayac = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(imageChange), userInfo: nil, repeats: true)
     }
     
     @objc func sayacSay() {
@@ -136,7 +136,7 @@ class GamePlayScreenVC: UIViewController {
             self.score = 0
             self.scoreLabel.text = "Score : \(self.score)"
             self.sayac = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.sayacSay), userInfo: nil, repeats: true)
-            self.imageSayac = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.imageChange), userInfo: nil, repeats: true)
+            self.imageSayac = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(self.imageChange), userInfo: nil, repeats: true)
         }
         let okButton = UIAlertAction(title: "OK", style: .cancel) {
             _ in

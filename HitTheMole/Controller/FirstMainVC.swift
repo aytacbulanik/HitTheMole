@@ -11,6 +11,7 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var nameTextField : UITextField!
     var username : String = ""
+    var level = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.delegate = self
@@ -32,9 +33,30 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
         if let name = nameTextField.text {
             if !name.isEmpty {
                 username = name
+                levelConfig()
                 performSegue(withIdentifier: "goPlaySegue", sender: nil)
             }
         }
+    }
+    
+    func levelConfig() {
+        let alert = UIAlertController(title: "Level", message: "Hangi seviyede oynamak istiyorsunuz", preferredStyle: .actionSheet)
+        let easyButton = UIAlertAction(title: "Easy", style: .default) {
+            action in
+            self.level = 0.5
+        }
+        let mediumButton = UIAlertAction(title: "Medium", style: .default) {
+            action in
+            self.level = 0.35
+        }
+        let hardButton = UIAlertAction(title: "Hard", style: .default) {
+            action in
+            self.level = 0.2
+        }
+        alert.addAction(easyButton)
+        alert.addAction(mediumButton)
+        alert.addAction(hardButton)
+        present(alert, animated: true)
     }
 
 }
