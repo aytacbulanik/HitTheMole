@@ -56,17 +56,13 @@ class GamePlayScreenVC: UIViewController {
         for image in imageArray {
             image.isHidden = true
         }
+        newGame()
         gestureManage()
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        newGame()
-    }
-    
     @IBAction func newGameButtonPressed(_ sender : UIBarButtonItem) {
-       newGame()
+      levelConfig()
     }
     
     func newGame() {
@@ -155,6 +151,28 @@ class GamePlayScreenVC: UIViewController {
         }
         alert.addAction(okButton)
         alert.addAction(replayButton)
+        present(alert, animated: true)
+    }
+    func levelConfig() {
+        let alert = UIAlertController(title: "Level", message: "Hangi seviyede oynamak istiyorsunuz", preferredStyle: .actionSheet)
+        let easyButton = UIAlertAction(title: "Easy", style: .default) {
+            action in
+            self.comeLevel = 0.5
+            self.newGame()
+        }
+        let mediumButton = UIAlertAction(title: "Medium", style: .default) {
+            action in
+            self.comeLevel = 0.35
+            self.newGame()
+        }
+        let hardButton = UIAlertAction(title: "Hard", style: .default) {
+            action in
+            self.comeLevel = 0.2
+            self.newGame()
+        }
+        alert.addAction(easyButton)
+        alert.addAction(mediumButton)
+        alert.addAction(hardButton)
         present(alert, animated: true)
     }
 
