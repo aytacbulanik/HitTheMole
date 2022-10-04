@@ -15,6 +15,7 @@ class GamePlayScreenVC: UIViewController {
     @IBOutlet var highScoreLabel : UILabel!
     
     @IBOutlet var scoreBarButton : UIBarButtonItem!
+    @IBOutlet var newGameButton : UIBarButtonItem!
     
     @IBOutlet var holeImage1 : UIImageView!
     @IBOutlet var holeImage2 : UIImageView!
@@ -34,7 +35,7 @@ class GamePlayScreenVC: UIViewController {
     let realm = try! Realm()
     var name : String? {
         didSet {
-           title = name!
+            title = name!.uppercased()
         }
     }
     var comeLevel : Double?
@@ -61,9 +62,19 @@ class GamePlayScreenVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        newGame()
+    }
+    
+    @IBAction func newGameButtonPressed(_ sender : UIBarButtonItem) {
+       newGame()
+    }
+    
+    func newGame() {
         scoreBarButton.isEnabled = false
+        newGameButton.isEnabled = false
         time = 10
         score = 0
+        self.scoreLabel.text = "Score : \(self.score)"
         guard let level = comeLevel else {return}
         sayac = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(sayacSay), userInfo: nil, repeats: true)
         imageSayac = Timer.scheduledTimer(timeInterval: level, target: self, selector: #selector(imageChange), userInfo: nil, repeats: true)
@@ -134,15 +145,12 @@ class GamePlayScreenVC: UIViewController {
     func showAlert(name : String , description : String) {
         let alert = UIAlertController(title: name, message: description, preferredStyle: .alert)
         let replayButton = UIAlertAction(title: "REPLAY", style: .default) { _ in
-            self.score = 0
-            guard let level = self.comeLevel else {return}
-            self.scoreLabel.text = "Score : \(self.score)"
-            self.sayac = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.sayacSay), userInfo: nil, repeats: true)
-            self.imageSayac = Timer.scheduledTimer(timeInterval: level, target: self, selector: #selector(self.imageChange), userInfo: nil, repeats: true)
+            self.newGame()
         }
         let okButton = UIAlertAction(title: "OK", style: .cancel) {
             _ in
             self.scoreBarButton.isEnabled = true
+            self.newGameButton.isEnabled = true
             
         }
         alert.addAction(okButton)

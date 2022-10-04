@@ -182,6 +182,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="9vo-u3-aHi">
                         <barButtonItem key="backBarButtonItem" title="Back to Game" id="g6t-zC-XaI"/>
+                        <barButtonItem key="leftBarButtonItem" title="New Game" id="w9G-vY-JMT">
+                            <connections>
+                                <action selector="newGameButtonPressed:" destination="1nU-J7-rKN" id="PIg-Ss-nee"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Scores" id="vlc-tw-LnC">
                             <connections>
                                 <segue destination="r1d-43-FaB" kind="show" id="xuH-5v-Yml"/>
@@ -199,6 +204,7 @@
                         <outlet property="holeImage7" destination="0K1-W3-BZe" id="BMm-lK-xmf"/>
                         <outlet property="holeImage8" destination="Ccc-Qc-DS2" id="0YY-uL-eTs"/>
                         <outlet property="holeImage9" destination="F82-Uf-qtq" id="VU0-vH-VJy"/>
+                        <outlet property="newGameButton" destination="w9G-vY-JMT" id="saC-VP-EU4"/>
                         <outlet property="scoreBarButton" destination="vlc-tw-LnC" id="8xf-Cm-BkH"/>
                         <outlet property="scoreLabel" destination="f6F-sd-MR4" id="NVT-09-YaS"/>
                         <outlet property="timeLabel" destination="sto-dq-HCz" id="wJJ-Uz-8eP"/>
