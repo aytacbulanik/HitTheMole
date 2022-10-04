@@ -41,7 +41,6 @@ class GamePlayScreenVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(comeLevel)
         navigationItem.hidesBackButton = true
         imageArray.append(holeImage1)
         imageArray.append(holeImage2)
@@ -65,8 +64,9 @@ class GamePlayScreenVC: UIViewController {
         scoreBarButton.isEnabled = false
         time = 10
         score = 0
+        guard let level = comeLevel else {return}
         sayac = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(sayacSay), userInfo: nil, repeats: true)
-        imageSayac = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(imageChange), userInfo: nil, repeats: true)
+        imageSayac = Timer.scheduledTimer(timeInterval: level, target: self, selector: #selector(imageChange), userInfo: nil, repeats: true)
     }
     
     @objc func sayacSay() {
@@ -135,9 +135,10 @@ class GamePlayScreenVC: UIViewController {
         let alert = UIAlertController(title: name, message: description, preferredStyle: .alert)
         let replayButton = UIAlertAction(title: "REPLAY", style: .default) { _ in
             self.score = 0
+            guard let level = self.comeLevel else {return}
             self.scoreLabel.text = "Score : \(self.score)"
             self.sayac = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.sayacSay), userInfo: nil, repeats: true)
-            self.imageSayac = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(self.imageChange), userInfo: nil, repeats: true)
+            self.imageSayac = Timer.scheduledTimer(timeInterval: level, target: self, selector: #selector(self.imageChange), userInfo: nil, repeats: true)
         }
         let okButton = UIAlertAction(title: "OK", style: .cancel) {
             _ in
