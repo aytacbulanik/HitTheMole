@@ -90,7 +90,8 @@ class GamePlayScreenVC: UIViewController {
             Score : \(score)
             Do want to play again
             """)
-            let score = Score(scorePuan: score, scoreDate: Date.now)
+            guard let gamerName = title else {return}
+            let score = Score(gamerName : gamerName, scorePuan: score, scoreDate: Date.now)
             try! realm.write {
                 realm.add(score)
             }
