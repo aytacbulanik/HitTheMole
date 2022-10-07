@@ -17,6 +17,7 @@
 		B4C3896728E4DDBE002BEFA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4C3896528E4DDBE002BEFA2 /* LaunchScreen.storyboard */; };
 		B4C3896F28E4DEA5002BEFA2 /* FirstMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C3896E28E4DEA5002BEFA2 /* FirstMainVC.swift */; };
 		B4C3897128E4E43E002BEFA2 /* GamePlayScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C3897028E4E43E002BEFA2 /* GamePlayScreenVC.swift */; };
+		B4C9452828F0D4B900463579 /* Gamers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C9452728F0D4B900463579 /* Gamers.swift */; };
 		B4F2F50F28E5B37300D48626 /* ScoresTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F2F50E28E5B37300D48626 /* ScoresTableVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		B4C3896828E4DDBE002BEFA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4C3896E28E4DEA5002BEFA2 /* FirstMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstMainVC.swift; sourceTree = "<group>"; };
 		B4C3897028E4E43E002BEFA2 /* GamePlayScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayScreenVC.swift; sourceTree = "<group>"; };
+		B4C9452728F0D4B900463579 /* Gamers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gamers.swift; sourceTree = SOURCE_ROOT; };
 		B4CB4E7528E9A00C0087B082 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
 		B4CB4E7628E9A00C0087B082 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		B4F2F50E28E5B37300D48626 /* ScoresTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresTableVC.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				B44F5DA828E8CB8A0067E88F /* Score.swift */,
+				B4C9452728F0D4B900463579 /* Gamers.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				B4F2F50F28E5B37300D48626 /* ScoresTableVC.swift in Sources */,
 				B44F5DA928E8CB8A0067E88F /* Score.swift in Sources */,
 				B4C3896F28E4DEA5002BEFA2 /* FirstMainVC.swift in Sources */,
+				B4C9452828F0D4B900463579 /* Gamers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
