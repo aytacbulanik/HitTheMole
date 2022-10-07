@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FirstMainVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var nameTextField : UITextField!
     var username : String = ""
+    var realm = try! Realm()
+    var gamers : Results<Gamers>?
     var level = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +32,10 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
         }
     }
     
-
+    @IBAction func newUserButtonPressed(_ sender : UIBarButtonItem) {
+           addUser()
+    }
+    
     @IBAction func playButtonPressed(_ sender : UIButton) {
         if let name = nameTextField.text {
             if !name.isEmpty {
@@ -59,6 +65,32 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
         alert.addAction(easyButton)
         alert.addAction(mediumButton)
         alert.addAction(hardButton)
+        present(alert, animated: true)
+    }
+    
+    func addUser() {
+        let alert = UIAlertController(title: "New User !!!", message: "Please, write a new user", preferredStyle: .alert)
+        var textField = UITextField()
+        alert.addTextField() {
+            txtField in
+            txtField.placeholder = "Write a name"
+            textField = txtField
+        }
+        let saveButton = UIAlertAction(title: "SAVE", style: .default) {
+            action in
+            guard let name = textField.text else {return}
+            let user = Gamers(userName: name.uppercased(), createDate: Date.now)
+            do {
+                try self.realm.write({
+                    self.realm.add(user)
+                })
+            }catch {
+                print(error.localizedDescription)
+            }
+        }
+        let cancelButton = UIAlertAction(title: "CANCEL", style: .destructive)
+        alert.addAction(saveButton)
+        alert.addAction(cancelButton)
         present(alert, animated: true)
     }
 

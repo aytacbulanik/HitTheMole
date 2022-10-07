@@ -51,7 +51,13 @@
                             <constraint firstItem="m0g-MM-p3h" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="wDw-Qa-CiT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="WEf-6l-MEa"/>
+                    <navigationItem key="navigationItem" id="WEf-6l-MEa">
+                        <barButtonItem key="rightBarButtonItem" title="Add User" id="lMn-D0-KaW">
+                            <connections>
+                                <action selector="newUserButtonPressed:" destination="BYZ-38-t0r" id="OzS-EW-YZa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nameTextField" destination="m0g-MM-p3h" id="cp1-2w-6dV"/>
                         <segue destination="1nU-J7-rKN" kind="show" identifier="goPlaySegue" id="K9Q-7m-90D"/>
