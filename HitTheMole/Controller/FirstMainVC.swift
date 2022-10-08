@@ -15,9 +15,14 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
     var realm = try! Realm()
     var gamers : Results<Gamers>?
     var level = 0.0
+    var picker = UIPickerView()
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.delegate = self
+        picker.delegate = self
+        picker.dataSource = self
+        picker.backgroundColor = .darkGray
+        nameTextField.inputView = picker
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -34,6 +39,7 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func newUserButtonPressed(_ sender : UIBarButtonItem) {
            addUser()
+        
     }
     
     @IBAction func playButtonPressed(_ sender : UIButton) {
@@ -93,5 +99,26 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
         alert.addAction(cancelButton)
         present(alert, animated: true)
     }
+    
+    func loadUser() {
+        gamers = realm.objects(Gamers.self)
+    }
 
+}
+
+extension FirstMainVC : UIPickerViewDelegate , UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return gamers?.count ?? 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        loadUser()
+        return gamers?[row].userName ?? "No User"
+    }
+    
+    
 }
