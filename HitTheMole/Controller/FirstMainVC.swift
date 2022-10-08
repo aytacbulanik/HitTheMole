@@ -16,6 +16,7 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
     var gamers : Results<Gamers>?
     var level = 0.0
     var picker = UIPickerView()
+    var toolbar = UIToolbar()
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.delegate = self
@@ -23,6 +24,9 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
         picker.dataSource = self
         picker.backgroundColor = .darkGray
         nameTextField.inputView = picker
+        toolbar.sizeToFit()
+        nameTextField.inputAccessoryView = toolbar
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -119,6 +123,8 @@ extension FirstMainVC : UIPickerViewDelegate , UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         nameTextField.text = gamers?[row].userName ?? "No User"
     }
+    
+    
     
     
 }
