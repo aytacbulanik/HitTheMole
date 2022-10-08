@@ -100,10 +100,6 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
         present(alert, animated: true)
     }
     
-    func loadUser() {
-        gamers = realm.objects(Gamers.self)
-    }
-
 }
 
 extension FirstMainVC : UIPickerViewDelegate , UIPickerViewDataSource {
@@ -116,8 +112,12 @@ extension FirstMainVC : UIPickerViewDelegate , UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        loadUser()
+        gamers = realm.objects(Gamers.self)
         return gamers?[row].userName ?? "No User"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        nameTextField.text = gamers?[row].userName ?? "No User"
     }
     
     
