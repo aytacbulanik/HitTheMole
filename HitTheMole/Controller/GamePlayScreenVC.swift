@@ -171,9 +171,11 @@ class GamePlayScreenVC: UIViewController {
             self.comeLevel = 0.2
             self.newGame()
         }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
         alert.addAction(easyButton)
         alert.addAction(mediumButton)
         alert.addAction(hardButton)
+        alert.addAction(cancelButton)
         present(alert, animated: true)
     }
 

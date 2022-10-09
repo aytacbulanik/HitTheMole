@@ -55,8 +55,9 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
     
     func configToolbar() {
         toolbar.sizeToFit()
-        let okButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(closePicker))
-        toolbar.items = [okButton]
+        let okButton = UIBarButtonItem(title: "Choose", style: .plain, target: self, action: #selector(closePicker))
+        let flexButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        toolbar.items = [flexButton,okButton]
         nameTextField.inputAccessoryView = toolbar
     }
     @objc func closePicker() {
@@ -80,9 +81,11 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
             self.level = 0.2
             self.performSegue(withIdentifier: "goPlaySegue", sender: nil)
         }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
         alert.addAction(easyButton)
         alert.addAction(mediumButton)
         alert.addAction(hardButton)
+        alert.addAction(cancelButton)
         present(alert, animated: true)
     }
     
