@@ -24,9 +24,7 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
         picker.dataSource = self
         picker.backgroundColor = .darkGray
         nameTextField.inputView = picker
-        toolbar.sizeToFit()
-        nameTextField.inputAccessoryView = toolbar
-        
+        configToolbar()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -53,6 +51,16 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
                 levelConfig()
             }
         }
+    }
+    
+    func configToolbar() {
+        toolbar.sizeToFit()
+        let okButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(closePicker))
+        toolbar.items = [okButton]
+        nameTextField.inputAccessoryView = toolbar
+    }
+    @objc func closePicker() {
+        view.endEditing(true)
     }
     
     func levelConfig() {
