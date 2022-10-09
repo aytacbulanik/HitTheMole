@@ -22,7 +22,7 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
         nameTextField.delegate = self
         picker.delegate = self
         picker.dataSource = self
-        picker.backgroundColor = .darkGray
+        picker.backgroundColor = .systemTeal
         nameTextField.inputView = picker
         configToolbar()
     }
@@ -58,7 +58,10 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
         let okButton = UIBarButtonItem(title: "Choose", style: .plain, target: self, action: #selector(closePicker))
         let flexButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         toolbar.items = [flexButton,okButton]
+        toolbar.barTintColor = .lightGray
+        toolbar.tintColor = .black
         nameTextField.inputAccessoryView = toolbar
+        nameTextField.text = gamers?[0].userName
     }
     @objc func closePicker() {
         view.endEditing(true)
@@ -133,6 +136,21 @@ extension FirstMainVC : UIPickerViewDelegate , UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         nameTextField.text = gamers?[row].userName ?? "No User"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label: UILabel
+            if let view = view as? UILabel {
+                label = view
+            } else {
+                label = UILabel()
+            }
+            
+            label.textColor = .black
+            label.textAlignment = .center
+            label.font = UIFont(name: "Palatino", size: 17)
+            label.text = gamers?[row].userName ?? "No user "
+            return label
     }
     
     

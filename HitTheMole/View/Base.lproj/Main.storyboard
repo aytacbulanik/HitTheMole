@@ -25,11 +25,13 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please, Write a name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m0g-MM-p3h">
                                 <rect key="frame" x="20" y="431" width="374" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCX-WV-xq2">
                                 <rect key="frame" x="156" y="696" width="102" height="66"/>
+                                <color key="tintColor" systemColor="systemTealColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Play">
                                     <fontDescription key="titleFontDescription" name="Kailasa" family="Kailasa" pointSize="40"/>
@@ -53,6 +55,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="WEf-6l-MEa">
                         <barButtonItem key="rightBarButtonItem" title="Add User" id="lMn-D0-KaW">
+                            <color key="tintColor" systemColor="systemTealColor"/>
                             <connections>
                                 <action selector="newUserButtonPressed:" destination="BYZ-38-t0r" id="OzS-EW-YZa"/>
                             </connections>
@@ -288,6 +291,9 @@
         <image name="bosCukur" width="197" height="157"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
