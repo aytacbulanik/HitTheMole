@@ -11,7 +11,7 @@ import RealmSwift
 class ScoresTableVC: UITableViewController {
     
     var scores : Results<Score>?
-    var bolumler : [Results<Score>?] = []
+    var bolumler : [Score] = []
     var gamers : Results<Gamers>?
     let realm = try! Realm()
     override func viewDidLoad() {
@@ -21,7 +21,7 @@ class ScoresTableVC: UITableViewController {
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return gamers?.count ?? 1
+        return bolumler.count
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return scores?.count ?? 1
@@ -32,14 +32,19 @@ class ScoresTableVC: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
          scores = realm.objects(Score.self)
          gamers = realm.objects(Gamers.self)
+        guard let scores else {return}
+        for score in scores {
+            bolumler.append(score)
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "scoreCell", for: indexPath)
-        if let score = scores?[indexPath.row] {
-            cell.textLabel?.text = "Oyuncu : \(score.gamerName) -- Score : \(score.scorePuan)"
+        let veri = bolumler[indexPath.section].gamerName
+        cell.textLabel?.text = "\(veri)"
+            /*cell.textLabel?.text = "Oyuncu : \(score.gamerName) -- Score : \(score.scorePuan)"
             cell.detailTextLabel?.text = dateDesign(date: score.scoreDate)
-        }
+        */
         
         return cell
     }
