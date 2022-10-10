@@ -26,7 +26,11 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
         nameTextField.inputView = picker
         configToolbar()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        gamers = realm.objects(Gamers.self)
+        self.picker.reloadAllComponents()
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         nameTextField.endEditing(true)
     }
@@ -111,6 +115,7 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
             }catch {
                 print(error.localizedDescription)
             }
+            self.picker.reloadAllComponents()
         }
         let cancelButton = UIAlertAction(title: "CANCEL", style: .destructive)
         alert.addAction(saveButton)
@@ -148,7 +153,7 @@ extension FirstMainVC : UIPickerViewDelegate , UIPickerViewDataSource {
             
             label.textColor = .black
             label.textAlignment = .center
-            label.font = UIFont(name: "Palatino", size: 17)
+            label.font = UIFont(name: "Palatino", size: 22)
             label.text = gamers?[row].userName ?? "No user "
             return label
     }
