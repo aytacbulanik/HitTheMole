@@ -11,6 +11,8 @@ import RealmSwift
 class ScoresTableVC: UITableViewController {
     
     var scores : Results<Score>?
+    var bolumler : [Results<Score>?] = []
+    var gamers : Results<Gamers>?
     let realm = try! Realm()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,13 +20,18 @@ class ScoresTableVC: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return gamers?.count ?? 1
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return scores?.count ?? 1
+    }
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return gamers?[section].userName ?? "deneme"
     }
     override func viewWillAppear(_ animated: Bool) {
          scores = realm.objects(Score.self)
+         gamers = realm.objects(Gamers.self)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pCt-PF-BkJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="r1d-43-FaB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -223,7 +223,7 @@
             </objects>
             <point key="canvasLocation" x="1681.1594202898552" y="97.767857142857139"/>
         </scene>
-        <!--Scores TableVC-->
+        <!--SCORES-->
         <scene sceneID="fzh-7i-tPT">
             <objects>
                 <tableViewController id="r1d-43-FaB" customClass="ScoresTableVC" customModule="HitTheMole" customModuleProvider="target" sceneMemberID="viewController">
@@ -262,7 +262,7 @@
                             <outlet property="delegate" destination="r1d-43-FaB" id="tUC-KL-AmB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="usP-dm-8vc"/>
+                    <navigationItem key="navigationItem" title="SCORES" id="usP-dm-8vc"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCw-KT-4pF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
