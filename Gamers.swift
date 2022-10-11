@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 import RealmSwift
 
-class Gamers : Object {
+class Gamers : Object , Codable {
     @Persisted var userName : String = ""
     @Persisted var createDate : Date = Date.now
     
@@ -17,4 +18,19 @@ class Gamers : Object {
         self.userName = userName
         self.createDate = createDate
     }
+    func jsonToArray(gamers : Data) {
+        let decoder = JSONDecoder()
+        let encoder = JSONEncoder()
+                do {
+        let decodedData = try decoder.decode(GamersArray.self, from: gamers)
+                    print(decodedData) //gelen çözümlenen veriyi yazdırıyoruz.
+                }catch {
+                    print(error)
+                }
+    }
+}
+
+struct GamersArray : Codable {
+    var isim : String
+    var date : Date
 }

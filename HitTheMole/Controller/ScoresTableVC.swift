@@ -13,6 +13,7 @@ class ScoresTableVC: UITableViewController {
     var scores : Results<Score>?
     //var bolumler : [Score] = []
     var gamers : Results<Gamers>?
+    var gamersObject : Gamers?
     var bolumler = ["Meyve","Sebze","araba"]
     var bolumVerisi = [["Elma","Armut","Çilek"],["Karnıbahar","patates",],["ferrari","Audi","Mercedes","BMW"]]
     let realm = try! Realm()
@@ -32,12 +33,13 @@ class ScoresTableVC: UITableViewController {
         return bolumler[section]
     }
     override func viewWillAppear(_ animated: Bool) {
-       /*  scores = realm.objects(Score.self)
+         scores = realm.objects(Score.self)
          gamers = realm.objects(Gamers.self)
+        gamersObject?.jsonToArray(gamers: gamers)
         guard let scores else {return}
         for score in scores {
-            bolumler.append(score)
-        }*/
+            print(gamers)
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
