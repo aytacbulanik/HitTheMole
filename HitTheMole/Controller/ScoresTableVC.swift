@@ -11,12 +11,8 @@ import RealmSwift
 class ScoresTableVC: UITableViewController {
     
     var scores : Results<Score>?
-    //var bolumler : [Score] = []
     var gamers : Results<Gamers>?
-    var gamersObject : Gamers?
     var gameArray : [GamersArray] = []
-    var bolumler = ["Meyve","Sebze","araba"]
-    var bolumVerisi = [["Elma","Armut","Çilek"],["Karnıbahar","patates",],["ferrari","Audi","Mercedes","BMW"]]
     let realm = try! Realm()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,27 +21,31 @@ class ScoresTableVC: UITableViewController {
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return bolumler.count
+        return gameArray.count
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bolumVerisi[section].count
+        return gameArray.count
     }
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return bolumler[section]
+        return gameArray[section].isim
     }
     override func viewWillAppear(_ animated: Bool) {
          scores = realm.objects(Score.self)
-        gameArray = realm.objects(Gamers.self).toArray(ofType: GamersArray.self) as? [GamersArray] ?? [GamersArray]()
+        gamers = realm.objects(Gamers.self)
         
-        guard let scores else {return}
-        for score in scores {
-            print(gamers)
+        guard let gamers else {return}
+        for game in gamers {
+            let name = game.userName
+            let date = game.createDate
+            let gameArrayObject : GamersArray = GamersArray(isim: name, date: date)
+            gameArray.append(gameArrayObject)
         }
+       
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "scoreCell", for: indexPath)
-        cell.textLabel?.text = bolumVerisi[indexPath.section][indexPath.row]
+        cell.textLabel?.text = "Deneme"
         return cell
     }
     
