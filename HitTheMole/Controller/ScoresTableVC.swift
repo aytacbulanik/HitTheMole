@@ -14,6 +14,7 @@ class ScoresTableVC: UITableViewController {
     //var bolumler : [Score] = []
     var gamers : Results<Gamers>?
     var gamersObject : Gamers?
+    var gameArray : [GamersArray] = []
     var bolumler = ["Meyve","Sebze","araba"]
     var bolumVerisi = [["Elma","Armut","Çilek"],["Karnıbahar","patates",],["ferrari","Audi","Mercedes","BMW"]]
     let realm = try! Realm()
@@ -34,8 +35,8 @@ class ScoresTableVC: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
          scores = realm.objects(Score.self)
-         gamers = realm.objects(Gamers.self)
-        gamersObject?.jsonToArray(gamers: gamers)
+        gameArray = realm.objects(Gamers.self).toArray(ofType: GamersArray.self) as? [GamersArray] ?? [GamersArray]()
+        
         guard let scores else {return}
         for score in scores {
             print(gamers)
