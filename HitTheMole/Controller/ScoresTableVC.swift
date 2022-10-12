@@ -13,7 +13,7 @@ class ScoresTableVC: UITableViewController {
     var scores : Results<Score>?
     var gamers : Results<Gamers>?
     var gameArray : [GamersArray] = []
-    var scoreArray : [ScoreArray] = []
+    var scoreArray : [ScoresArray] = []
     let realm = try! Realm()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,12 @@ class ScoresTableVC: UITableViewController {
         scoreArray.removeAll(keepingCapacity: true)
         
         for score in scores {
-            print(score)
+            let isim = score.gamerName
+            let gamescore = score.scorePuan
+            let dateDesing = dateDesign(date: score.scoreDate)
+            let date = score.scoreDate
+            let newScore : ScoresArray = ScoresArray(isim: isim, score: gamescore, date: date)
+            scoreArray.append(newScore)
         }
         
         for game in gamers {
@@ -50,7 +55,7 @@ class ScoresTableVC: UITableViewController {
             let gameArrayObject : GamersArray = GamersArray(isim: name, date: date)
             gameArray.append(gameArrayObject)
         }
-        
+        print(scoreArray.count)
        
     }
     
