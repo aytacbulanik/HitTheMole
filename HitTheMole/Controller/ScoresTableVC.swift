@@ -13,6 +13,7 @@ class ScoresTableVC: UITableViewController {
     var scores : Results<Score>?
     var gamers : Results<Gamers>?
     var gameArray : [GamersArray] = []
+    var scoreArray : [ScoreArray] = []
     let realm = try! Realm()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,16 +31,26 @@ class ScoresTableVC: UITableViewController {
         return gameArray[section].isim
     }
     override func viewWillAppear(_ animated: Bool) {
-         scores = realm.objects(Score.self)
+       
+        scores = realm.objects(Score.self)
         gamers = realm.objects(Gamers.self)
         
         guard let gamers else {return}
+        guard let scores else {return}
+        gameArray.removeAll(keepingCapacity: true)
+        scoreArray.removeAll(keepingCapacity: true)
+        
+        for score in scores {
+            print(score)
+        }
+        
         for game in gamers {
             let name = game.userName
             let date = game.createDate
             let gameArrayObject : GamersArray = GamersArray(isim: name, date: date)
             gameArray.append(gameArrayObject)
         }
+        
        
     }
     

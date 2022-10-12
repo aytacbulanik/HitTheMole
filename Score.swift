@@ -20,3 +20,9 @@ class Score : Object {
         self.gamerName = gamerName
     }
 }
+
+struct ScoreArray {
+    var isim : String
+    var score : Int
+    var date : Date
+}
