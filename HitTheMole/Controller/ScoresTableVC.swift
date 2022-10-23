@@ -11,8 +11,6 @@ import RealmSwift
 class ScoresTableVC: UITableViewController {
     
     var scores : Results<Score>?
-    var gamers : Results<Gamers>?
-    var gameArray : [GamersArray] = []
     var scoreArray : [ScoresArray] = []
     let realm = try! Realm()
     override func viewDidLoad() {
@@ -21,23 +19,15 @@ class ScoresTableVC: UITableViewController {
     }
 
     // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return gameArray.count
-    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return gameArray.count
+        return scoreArray.count
     }
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return gameArray[section].isim
-    }
+   
     override func viewWillAppear(_ animated: Bool) {
        
         scores = realm.objects(Score.self)
-        gamers = realm.objects(Gamers.self)
-        
-        guard let gamers else {return}
         guard let scores else {return}
-        gameArray.removeAll(keepingCapacity: true)
         scoreArray.removeAll(keepingCapacity: true)
         
         for score in scores {
@@ -48,20 +38,15 @@ class ScoresTableVC: UITableViewController {
             let newScore : ScoresArray = ScoresArray(isim: isim, score: gamescore, date: date)
             scoreArray.append(newScore)
         }
-        
-        for game in gamers {
-            let name = game.userName
-            let date = game.createDate
-            let gameArrayObject : GamersArray = GamersArray(isim: name, date: date)
-            gameArray.append(gameArrayObject)
-        }
-        print(scoreArray.count)
+       
        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "scoreCell", for: indexPath)
-        cell.textLabel?.text = "Deneme"
+        let scores = scoreArray[indexPath.row]
+        cell.textLabel?.text = "\(scores.isim) : \(scores.score)"
+        cell.detailTextLabel?.text = "\(dateDesign(date: scores.date))"
         return cell
     }
     

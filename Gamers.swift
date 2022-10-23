@@ -20,7 +20,3 @@ class Gamers : Object {
     
 }
 
-struct GamersArray {
-    var isim : String
-    var date : Date
-}
