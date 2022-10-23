@@ -26,7 +26,7 @@ class GamePlayScreenVC: UIViewController {
     @IBOutlet var holeImage7 : UIImageView!
     @IBOutlet var holeImage8 : UIImageView!
     @IBOutlet var holeImage9 : UIImageView!
-    
+    var picker = UIPickerView()
     var imageArray = [UIImageView]()
     var time = 10
     var score = 0
@@ -97,6 +97,7 @@ class GamePlayScreenVC: UIViewController {
             try! realm.write {
                 realm.add(score)
             }
+            bestScoreClaculate()
         }
     }
     
@@ -189,5 +190,24 @@ class GamePlayScreenVC: UIViewController {
             }
         }
     }
+    func askNewGameUser() {
+        let alert = UIAlertController(title: "New Game", message: "Please choose a user", preferredStyle: .alert)
+        let playButton = UIAlertAction(title: "Play", style: .default)
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        let textField = UITextField()
+        textField.inputAccessoryView = picker
+        alert.addTextField { txtField in
+            txtField.placeholder = "Choose User"
+            textField.text = txtField.text
+        }
+        alert.addAction(playButton)
+        alert.addAction(cancelButton)
+        present(alert, animated: true, completion: levelConfig)
+    }
 
 }
+/*
+ extension GamePlayScreenVC : UIPickerViewDelegate , UIPickerViewDataSource {
+ 
+ }
+ */
