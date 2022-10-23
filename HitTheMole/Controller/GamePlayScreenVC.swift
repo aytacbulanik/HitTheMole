@@ -30,6 +30,7 @@ class GamePlayScreenVC: UIViewController {
     var imageArray = [UIImageView]()
     var time = 10
     var score = 0
+    var bestScore = 0
     var sayac = Timer()
     var imageSayac = Timer()
     let realm = try! Realm()
@@ -58,6 +59,7 @@ class GamePlayScreenVC: UIViewController {
         }
         newGame()
         gestureManage()
+        bestScoreClaculate()
         
     }
     
@@ -177,6 +179,15 @@ class GamePlayScreenVC: UIViewController {
         alert.addAction(hardButton)
         alert.addAction(cancelButton)
         present(alert, animated: true)
+    }
+    func bestScoreClaculate() {
+        let scores = realm.objects(Score.self)
+        for score in scores {
+            if score.scorePuan > bestScore {
+                bestScore = score.scorePuan
+                highScoreLabel.text = "High Score : \(score.gamerName) -- \(score.scorePuan)"
+            }
+        }
     }
 
 }

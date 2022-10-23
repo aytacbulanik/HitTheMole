@@ -33,7 +33,6 @@ class ScoresTableVC: UITableViewController {
         for score in scores {
             let isim = score.gamerName
             let gamescore = score.scorePuan
-            let dateDesing = dateDesign(date: score.scoreDate)
             let date = score.scoreDate
             let newScore : ScoresArray = ScoresArray(isim: isim, score: gamescore, date: date)
             scoreArray.append(newScore)
