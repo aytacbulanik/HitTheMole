@@ -33,6 +33,7 @@ class GamePlayScreenVC: UIViewController {
     var bestScore = 0
     var sayac = Timer()
     var imageSayac = Timer()
+    var gamers : Results<Gamers>?
     let realm = try! Realm()
     var name : String? {
         didSet {
@@ -207,8 +208,42 @@ class GamePlayScreenVC: UIViewController {
     }
 
 }
-/*
- extension GamePlayScreenVC : UIPickerViewDelegate , UIPickerViewDataSource {
- 
- }
- */
+
+extension GamePlayScreenVC : UIPickerViewDelegate , UIPickerViewDataSource {
+//    kaç picker olacağını belirliyor
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+//    picker de kaç satır olacağını belirliyor
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return gamers?.count ?? 1
+    }
+//   her satırda hangi verinin görüntüleneceğini belirliyor
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        gamers = realm.objects(Gamers.self)
+        return gamers?[row].userName ?? "No User"
+    }
+//    hangi satırın seçileceğini belirliyor
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //nameTextField.text = gamers?[row].userName ?? "No User"
+    }
+//    picker satırlarının customize etmeye yarıyor
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label: UILabel
+            if let view = view as? UILabel {
+                label = view
+            } else {
+                label = UILabel()
+            }
+            
+            label.textColor = .black
+            label.textAlignment = .center
+            label.font = UIFont(name: "Palatino", size: 22)
+            label.text = gamers?[row].userName ?? "No user "
+            return label
+    }
+    
+    
+    
+    
+}
