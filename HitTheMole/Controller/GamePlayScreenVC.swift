@@ -64,7 +64,8 @@ class GamePlayScreenVC: UIViewController {
     }
     
     @IBAction func newGameButtonPressed(_ sender : UIBarButtonItem) {
-      levelConfig()
+        askNewGameUser()
+        //levelConfig()
     }
     
     func newGame() {
