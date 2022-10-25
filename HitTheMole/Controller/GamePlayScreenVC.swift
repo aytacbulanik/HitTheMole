@@ -199,6 +199,7 @@ class GamePlayScreenVC: UIViewController {
         let textField = UITextField()
         textField.inputAccessoryView = picker
         alert.addTextField { txtField in
+            txtField.inputAccessoryView = self.picker
             txtField.placeholder = "Choose User"
             textField.text = txtField.text
         }
