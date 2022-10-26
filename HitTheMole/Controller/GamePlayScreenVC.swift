@@ -69,6 +69,7 @@ class GamePlayScreenVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        configToolbar()
         gamers = realm.objects(Gamers.self)
     }
     @IBAction func newGameButtonPressed(_ sender : UIBarButtonItem) {
@@ -201,19 +202,21 @@ class GamePlayScreenVC: UIViewController {
     }
     func askNewGameUser() {
         let alert = UIAlertController(title: "New Game", message: "Please choose a user", preferredStyle: .alert)
-        let playButton = UIAlertAction(title: "Play", style: .default)
+        let playButton = UIAlertAction(title: "Play", style: .default) {
+            action in
+            self.levelConfig()
+        }
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
         textField.inputAccessoryView = picker
         alert.addTextField { txtField in
             txtField.inputView = self.picker
             txtField.inputAccessoryView = self.toolbar
             txtField.placeholder = "Choose User"
-            txtField.text = self.gamers?[0].userName
-            self.textField.text = txtField.text
+            txtField.text = self.title
         }
         alert.addAction(playButton)
         alert.addAction(cancelButton)
-        present(alert, animated: true, completion: levelConfig)
+        present(alert, animated: true, completion: nil)
     }
 
 }
@@ -234,7 +237,8 @@ extension GamePlayScreenVC : UIPickerViewDelegate , UIPickerViewDataSource {
     }
 //    hangi satırın seçileceğini belirliyor
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //nameTextField.text = gamers?[row].userName ?? "No User"
+        textField.text = gamers?[row].userName ?? "No User"
+        title = gamers?[row].userName ?? "No User"
     }
 //    picker satırlarının customize etmeye yarıyor
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -244,7 +248,6 @@ extension GamePlayScreenVC : UIPickerViewDelegate , UIPickerViewDataSource {
             } else {
                 label = UILabel()
             }
-            
             label.textColor = .black
             label.textAlignment = .center
             label.font = UIFont(name: "Palatino", size: 22)

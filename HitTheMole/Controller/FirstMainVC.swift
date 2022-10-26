@@ -150,15 +150,10 @@ extension FirstMainVC : UIPickerViewDelegate , UIPickerViewDataSource {
             } else {
                 label = UILabel()
             }
-            
             label.textColor = .black
             label.textAlignment = .center
             label.font = UIFont(name: "Palatino", size: 22)
             label.text = gamers?[row].userName ?? "No user "
             return label
     }
-    
-    
-    
-    
 }

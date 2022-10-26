@@ -25,7 +25,6 @@ class ScoresTableVC: UITableViewController {
     }
    
     override func viewWillAppear(_ animated: Bool) {
-       
         scores = realm.objects(Score.self)
         guard let scores else {return}
         scoreArray.removeAll(keepingCapacity: true)
@@ -37,9 +36,8 @@ class ScoresTableVC: UITableViewController {
             let newScore : ScoresArray = ScoresArray(isim: isim, score: gamescore, date: date)
             scoreArray.append(newScore)
         }
-       
-       
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "scoreCell", for: indexPath)
