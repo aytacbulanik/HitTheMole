@@ -58,12 +58,17 @@ class GamePlayScreenVC: UIViewController {
         for image in imageArray {
             image.isHidden = true
         }
+        picker.delegate = self
+        picker.dataSource = self
         newGame()
         gestureManage()
         bestScoreClaculate()
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        gamers = realm.objects(Gamers.self)
+    }
     @IBAction func newGameButtonPressed(_ sender : UIBarButtonItem) {
         askNewGameUser()
         //levelConfig()
@@ -199,7 +204,7 @@ class GamePlayScreenVC: UIViewController {
         let textField = UITextField()
         textField.inputAccessoryView = picker
         alert.addTextField { txtField in
-            txtField.inputAccessoryView = self.picker
+            txtField.inputView = self.picker
             txtField.placeholder = "Choose User"
             textField.text = txtField.text
         }
