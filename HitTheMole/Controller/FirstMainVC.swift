@@ -45,7 +45,6 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func newUserButtonPressed(_ sender : UIBarButtonItem) {
            addUser()
-        
     }
     
     @IBAction func playButtonPressed(_ sender : UIButton) {
