@@ -135,7 +135,6 @@ extension FirstMainVC : UIPickerViewDelegate , UIPickerViewDataSource {
     }
 //   her satırda hangi verinin görüntüleneceğini belirliyor
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        gamers = realm.objects(Gamers.self)
         return gamers?[row].userName ?? "No User"
     }
 //    hangi satırın seçileceğini belirliyor

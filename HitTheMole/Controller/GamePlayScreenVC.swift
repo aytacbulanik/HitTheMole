@@ -42,6 +42,7 @@ class GamePlayScreenVC: UIViewController {
             title = name!.uppercased()
         }
     }
+    
     var comeLevel : Double?
     
     override func viewDidLoad() {
@@ -60,7 +61,7 @@ class GamePlayScreenVC: UIViewController {
         for image in imageArray {
             image.isHidden = true
         }
-        textField.delegate = self
+        textField.delegate = picker as? any UITextFieldDelegate
         picker.delegate = self
         picker.dataSource = self
         newGame()
@@ -213,7 +214,8 @@ class GamePlayScreenVC: UIViewController {
             txtField.inputView = self.picker
             txtField.inputAccessoryView = self.toolbar
             txtField.placeholder = "Choose User"
-            txtField.text = self.title
+            txtField.didChangeValue(forKey: self.title!)
+            txtField.text = self.textField.text
         }
         alert.addAction(playButton)
         alert.addAction(cancelButton)
