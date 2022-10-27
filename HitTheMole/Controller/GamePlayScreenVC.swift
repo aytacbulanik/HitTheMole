@@ -60,6 +60,7 @@ class GamePlayScreenVC: UIViewController {
         for image in imageArray {
             image.isHidden = true
         }
+        textField.delegate = self
         picker.delegate = self
         picker.dataSource = self
         newGame()
@@ -103,7 +104,8 @@ class GamePlayScreenVC: UIViewController {
             Do want to play again
             """)
             guard let gamerName = title else {return}
-            let score = Score(gamerName : gamerName, scorePuan: score, scoreDate: Date.now)
+            guard let comeLevel = comeLevel else {return}
+            let score = Score(gamerName : gamerName, scorePuan: score, scoreDate: Date.now , level: comeLevel)
             try! realm.write {
                 realm.add(score)
             }
@@ -207,7 +209,6 @@ class GamePlayScreenVC: UIViewController {
             self.levelConfig()
         }
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
-        textField.inputAccessoryView = picker
         alert.addTextField { txtField in
             txtField.inputView = self.picker
             txtField.inputAccessoryView = self.toolbar
@@ -257,7 +258,7 @@ extension GamePlayScreenVC : UIPickerViewDelegate , UIPickerViewDataSource {
     
 }
 
-extension GamePlayScreenVC : UITextViewDelegate {
+extension GamePlayScreenVC : UITextFieldDelegate {
     func configToolbar() {
         toolbar.sizeToFit()
         let okButton = UIBarButtonItem(title: "Choose", style: .plain, target: self, action: #selector(closePicker))
@@ -269,4 +270,5 @@ extension GamePlayScreenVC : UITextViewDelegate {
     @objc func closePicker() {
         view.endEditing(true)
     }
+    
 }

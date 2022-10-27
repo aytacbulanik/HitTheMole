@@ -33,7 +33,8 @@ class ScoresTableVC: UITableViewController {
             let isim = score.gamerName
             let gamescore = score.scorePuan
             let date = score.scoreDate
-            let newScore : ScoresArray = ScoresArray(isim: isim, score: gamescore, date: date)
+            let level = score.level
+            let newScore : ScoresArray = ScoresArray(isim: isim, score: gamescore, date: date, level: level)
             scoreArray.append(newScore)
         }
     }
@@ -42,8 +43,15 @@ class ScoresTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "scoreCell", for: indexPath)
         let scores = scoreArray[indexPath.row]
+        let level = 0.0
         cell.textLabel?.text = "\(scores.isim) : \(scores.score)"
         cell.detailTextLabel?.text = "\(dateDesign(date: scores.date))"
+        switch scores.level {
+        case 0.2 : cell.backgroundColor = .red
+        case 0.35 : cell.backgroundColor = .orange
+        case 0.5 : cell.backgroundColor = .yellow
+        default : cell.backgroundColor = .clear
+        }
         return cell
     }
     
