@@ -28,7 +28,7 @@ class GamePlayScreenVC: UIViewController {
     @IBOutlet var holeImage9 : UIImageView!
     var picker = UIPickerView()
     let toolbar = UIToolbar()
-    let textField = UITextField()
+    var textField = UITextField()
     var imageArray = [UIImageView]()
     var time = 10
     var score = 0
@@ -61,22 +61,19 @@ class GamePlayScreenVC: UIViewController {
         for image in imageArray {
             image.isHidden = true
         }
-        textField.delegate = picker as? any UITextFieldDelegate
-        picker.delegate = self
-        picker.dataSource = self
+
         newGame()
         gestureManage()
         bestScoreClaculate()
         
     }
+   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configToolbar()
         gamers = realm.objects(Gamers.self)
     }
     @IBAction func newGameButtonPressed(_ sender : UIBarButtonItem) {
-        askNewGameUser()
-        //levelConfig()
+        levelConfig()
     }
     
     func newGame() {
@@ -203,74 +200,6 @@ class GamePlayScreenVC: UIViewController {
             }
         }
     }
-    func askNewGameUser() {
-        let alert = UIAlertController(title: "New Game", message: "Please choose a user", preferredStyle: .alert)
-        let playButton = UIAlertAction(title: "Play", style: .default) {
-            action in
-            self.levelConfig()
-        }
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
-        alert.addTextField { txtField in
-            txtField.inputView = self.picker
-            txtField.inputAccessoryView = self.toolbar
-            txtField.placeholder = "Choose User"
-            txtField.didChangeValue(forKey: self.title!)
-            txtField.text = self.textField.text
-        }
-        alert.addAction(playButton)
-        alert.addAction(cancelButton)
-        present(alert, animated: true, completion: nil)
-    }
 
 }
 
-extension GamePlayScreenVC : UIPickerViewDelegate , UIPickerViewDataSource {
-//    kaç picker olacağını belirliyor
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-//    picker de kaç satır olacağını belirliyor
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return gamers?.count ?? 1
-    }
-//   her satırda hangi verinin görüntüleneceğini belirliyor
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        gamers = realm.objects(Gamers.self)
-        return gamers?[row].userName ?? "No User"
-    }
-//    hangi satırın seçileceğini belirliyor
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        textField.text = gamers?[row].userName ?? "No User"
-        title = gamers?[row].userName ?? "No User"
-    }
-//    picker satırlarının customize etmeye yarıyor
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var label: UILabel
-            if let view = view as? UILabel {
-                label = view
-            } else {
-                label = UILabel()
-            }
-            label.textColor = .black
-            label.textAlignment = .center
-            label.font = UIFont(name: "Palatino", size: 22)
-            label.text = gamers?[row].userName ?? "No user "
-            return label
-    }
-    
-}
-
-extension GamePlayScreenVC : UITextFieldDelegate {
-    func configToolbar() {
-        toolbar.sizeToFit()
-        let okButton = UIBarButtonItem(title: "Choose", style: .plain, target: self, action: #selector(closePicker))
-        let flexButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        toolbar.items = [flexButton,okButton]
-        toolbar.barTintColor = .lightGray
-        toolbar.tintColor = .black
-    }
-    @objc func closePicker() {
-        view.endEditing(true)
-    }
-    
-}
