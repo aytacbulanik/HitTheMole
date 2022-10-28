@@ -32,7 +32,8 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
         self.picker.reloadAllComponents()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        nameTextField.endEditing(true)
+        nameTextField.text = gamers?[0].userName
+        return nameTextField.endEditing(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -78,9 +78,7 @@ class GamePlayScreenVC: UIViewController {
     }
     
     @IBAction func chooseUsers(_ sender : UIBarButtonItem) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let backVC = storyBoard.instantiateViewController(withIdentifier: "firstVC")
-        present(backVC, animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     func newGame() {
