@@ -28,6 +28,7 @@ class FirstMainVC: UIViewController, UITextFieldDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        nameTextField.text = ""
         gamers = realm.objects(Gamers.self)
         self.picker.reloadAllComponents()
     }

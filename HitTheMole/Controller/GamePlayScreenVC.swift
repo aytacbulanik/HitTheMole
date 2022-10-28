@@ -160,9 +160,7 @@ class GamePlayScreenVC: UIViewController {
     
     func showAlert(name : String , description : String) {
         let alert = UIAlertController(title: name, message: description, preferredStyle: .alert)
-        let replayButton = UIAlertAction(title: "REPLAY", style: .default) { _ in
-            self.newGame()
-        }
+        
         let okButton = UIAlertAction(title: "OK", style: .cancel) {
             _ in
             self.scoreBarButton.isEnabled = true
@@ -171,7 +169,6 @@ class GamePlayScreenVC: UIViewController {
             
         }
         alert.addAction(okButton)
-        alert.addAction(replayButton)
         present(alert, animated: true)
     }
     func levelConfig() {

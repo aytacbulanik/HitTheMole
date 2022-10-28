@@ -11,7 +11,7 @@ import RealmSwift
 class ScoresTableVC: UITableViewController {
     
     var scores : Results<Score>?
-    var scoreArray : [ScoresArray] = []
+    var scoreArray : [ScoresArray] = [].sorted {$0.date < $1.date}
     let realm = try! Realm()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,6 @@ class ScoresTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "scoreCell", for: indexPath)
         let scores = scoreArray[indexPath.row]
-        let level = 0.0
         cell.textLabel?.text = "\(scores.isim) : \(scores.score)"
         cell.detailTextLabel?.text = "\(dateDesign(date: scores.date))"
         switch scores.level {
