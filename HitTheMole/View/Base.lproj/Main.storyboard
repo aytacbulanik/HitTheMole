@@ -12,7 +12,7 @@
         <!--First MainVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FirstMainVC" customModule="HitTheMole" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="firstVC" id="BYZ-38-t0r" customClass="FirstMainVC" customModule="HitTheMole" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,11 +191,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="9vo-u3-aHi">
                         <barButtonItem key="backBarButtonItem" title="Back to Game" id="g6t-zC-XaI"/>
-                        <barButtonItem key="leftBarButtonItem" title="New Game" id="w9G-vY-JMT">
-                            <connections>
-                                <action selector="newGameButtonPressed:" destination="1nU-J7-rKN" id="PIg-Ss-nee"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem title="Users" id="7qJ-R3-7cA">
+                                <connections>
+                                    <action selector="chooseUsers:" destination="1nU-J7-rKN" id="rfz-2d-LWH"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="New Game" id="w9G-vY-JMT">
+                                <connections>
+                                    <action selector="newGameButtonPressed:" destination="1nU-J7-rKN" id="PIg-Ss-nee"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" title="Scores" id="vlc-tw-LnC">
                             <connections>
                                 <segue destination="r1d-43-FaB" kind="show" id="xuH-5v-Yml"/>
@@ -203,6 +210,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="chooseUsersButton" destination="7qJ-R3-7cA" id="SVx-4g-JYA"/>
                         <outlet property="highScoreLabel" destination="DCc-uZ-kPJ" id="KP0-RG-e6G"/>
                         <outlet property="holeImage1" destination="4zb-CZ-nH4" id="g0R-xC-JgT"/>
                         <outlet property="holeImage2" destination="kBh-HA-wxA" id="7KT-jr-mTb"/>

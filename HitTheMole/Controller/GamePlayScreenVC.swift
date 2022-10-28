@@ -16,6 +16,7 @@ class GamePlayScreenVC: UIViewController {
     
     @IBOutlet var scoreBarButton : UIBarButtonItem!
     @IBOutlet var newGameButton : UIBarButtonItem!
+    @IBOutlet var chooseUsersButton : UIBarButtonItem!
     
     @IBOutlet var holeImage1 : UIImageView!
     @IBOutlet var holeImage2 : UIImageView!
@@ -76,9 +77,16 @@ class GamePlayScreenVC: UIViewController {
         levelConfig()
     }
     
+    @IBAction func chooseUsers(_ sender : UIBarButtonItem) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let backVC = storyBoard.instantiateViewController(withIdentifier: "firstVC")
+        present(backVC, animated: true)
+    }
+    
     func newGame() {
         scoreBarButton.isEnabled = false
         newGameButton.isEnabled = false
+        chooseUsersButton.isEnabled = false
         time = 10
         score = 0
         self.scoreLabel.text = "Score : \(self.score)"
@@ -161,6 +169,7 @@ class GamePlayScreenVC: UIViewController {
             _ in
             self.scoreBarButton.isEnabled = true
             self.newGameButton.isEnabled = true
+            self.chooseUsersButton.isEnabled = true
             
         }
         alert.addAction(okButton)
